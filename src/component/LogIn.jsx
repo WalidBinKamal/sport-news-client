@@ -33,7 +33,7 @@ const LogIn = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log('Sign in data updated', data)
+                                // console.log('Sign in data updated', data)
                             })
                         navigate('/');
                     });

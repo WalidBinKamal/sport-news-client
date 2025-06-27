@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../assets/SportNews.png'
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    // console.log(user)
     const links = <>
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/newsList'}>News List</Link></li>
@@ -10,6 +15,21 @@ const NavBar = () => {
         <li><Link to={'/addNews'}>Add News</Link></li>
 
     </>
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Sign Out Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -43,7 +63,9 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn btn-primary"><Link to={'/login'}>Login</Link></button>
+                    {
+                        user ? <button onClick={handleSignOut} className="btn btn-primary">Sign Out</button> : <button className="btn btn-primary"><Link to={'/login'}>Login</Link></button>
+                    }
                 </div>
             </div>
         </div>
