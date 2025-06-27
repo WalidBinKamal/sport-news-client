@@ -75,7 +75,6 @@ const NewsList = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };

@@ -15,10 +15,11 @@ const SignUp = () => {
         const imgUrl = form.imgUrl.value
         const email = form.email.value
         const password = form.password.value
-        const user = { name, imgUrl, email, password }
+
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
+                const creationTime = result.user.metadata.creationTime
+                const user = { name, imgUrl, email, creationTime }
                 axios.post('http://localhost:5000/users', user)
                     .then(data => {
                         if (data.data.insertedId) {
