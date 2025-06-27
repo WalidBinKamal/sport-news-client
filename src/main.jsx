@@ -9,12 +9,15 @@ import {
 import Home from './component/Home.jsx';
 import Hero from './component/Hero.jsx';
 import AddNews from './component/AddNews.jsx';
-import {  
+import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 import NewsList from './component/NewsList.jsx';
 import LogIn from './component/LogIn.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
+import SignUp from './component/SignUp.jsx';
+import UserList from './component/UserList.jsx';
 
 
 const router = createBrowserRouter([
@@ -35,10 +38,18 @@ const router = createBrowserRouter([
         element: <NewsList></NewsList>,
       },
       {
+        path: '/userList',
+        element: <UserList></UserList>,
+      },
+      {
         path: '/login',
         element: <LogIn></LogIn>
       },
-      
+      {
+        path: '/signup',
+        element: <SignUp></SignUp>
+      },
+
     ]
   },
 ]);
@@ -48,7 +59,9 @@ const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </QueryClientProvider>
   </StrictMode>,
 )
