@@ -15,7 +15,7 @@ const AddNews = () => {
 
         const news = { headline, reporter, category, imgUrl, description }
 
-        axios.post('http://localhost:5000/news', news)
+        axios.post('https://sport-news-server.vercel.app/news', news)
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({

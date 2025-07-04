@@ -24,7 +24,7 @@ const LogIn = () => {
                     }).then(() => {
                         const lastSignInTime = result?.user?.metadata?.lastSignInTime
                         const loginInfo = { email, lastSignInTime }
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://sport-news-server.vercel.app/users`, {
                             method: "PATCH",
                             headers: {  // <-- Corrected here
                                 'Content-Type': 'application/json',

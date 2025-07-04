@@ -5,7 +5,7 @@ const NewsList = () => {
     const { isPending, data: news, refetch } = useQuery({
         queryKey: ['news'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/news')
+            const res = await fetch('https://sport-news-server.vercel.app/news')
             return res.json()
         }
     })
@@ -22,7 +22,7 @@ const NewsList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/news/${id}`, {
+                fetch(`https://sport-news-server.vercel.app/news/${id}`, {
                     method: 'delete',
                 })
                     .then(res => res.json())

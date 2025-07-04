@@ -20,7 +20,7 @@ const SignUp = () => {
             .then(result => {
                 const creationTime = result.user.metadata.creationTime
                 const user = { name, imgUrl, email, creationTime }
-                axios.post('http://localhost:5000/users', user)
+                axios.post('https://sport-news-server.vercel.app/users', user)
                     .then(data => {
                         if (data.data.insertedId) {
                             Swal.fire({
