@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "sport-news-237d3"
-  }
+    "default": "sport-news-237d3",
+    "no": "sport-news-237d3"
+  },
+  "targets": {},
+  "etags": {}
 }
